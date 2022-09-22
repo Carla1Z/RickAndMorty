@@ -1,12 +1,13 @@
 import styles from "./Nav.module.css";
 import Searchbar from "../Searchbar";
-import icon from "../../assets/icon.png";
+// import logo from "../../assets/logo.png";
+import logo from "../../assets/logo.png";
 
 function Nav() {
   return (
     <div className={styles.nav}>
-      <img src={icon} alt="icon" />
-      <Searchbar />
+      <img src={logo} alt="logo" />
+      <Searchbar  className={styles.searchbar} />
     </div>
   );
 }
