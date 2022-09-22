@@ -1,6 +1,6 @@
-import styles from "./css/Form.module.css";
-import Create from "../components/Create";
 import { Link } from "react-router-dom";
+import Create from "../../components/Create";
+import styles from "./Form.module.css";
 
 function Form() {
   return (
