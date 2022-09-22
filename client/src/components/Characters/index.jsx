@@ -1,10 +1,10 @@
-import styles from "./Home.module.css";
+import styles from "./Characters.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getCharacters } from "../../redux/actions";
 import Card from "../Card";
 
-function Home() {
+function Characters() {
   const dispatch = useDispatch();
   const allCharacters = useSelector((state) => state.characters);
   // console.log(allCharacters);
@@ -37,4 +37,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Characters;

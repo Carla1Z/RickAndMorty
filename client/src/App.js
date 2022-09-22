@@ -1,10 +1,10 @@
 import styles from "./App.module.css";
-import Home from "./components/Home";
+import Characters from "./components/Characters";
 
 function App() {
   return (
     <div>
-      <Home />
+      <Characters />
     </div>
   );
 }
