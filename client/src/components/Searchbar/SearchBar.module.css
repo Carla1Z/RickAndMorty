@@ -13,6 +13,7 @@
   border: 1px solid yellowgreen;
   border-radius: 5px;
   background-color: #00b1c87e;
+  cursor: pointer;
 }
 
 .button :hover {
