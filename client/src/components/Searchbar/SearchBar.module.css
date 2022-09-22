@@ -1,0 +1,15 @@
+.searchbar {
+  margin-right: 15px;
+}
+
+.search {
+  padding: 5px;
+  border: 1px solid green;
+  border-radius: 5px;
+}
+
+.button {
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+}

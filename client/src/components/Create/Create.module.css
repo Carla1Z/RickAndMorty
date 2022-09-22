@@ -1,0 +1,34 @@
+.create{
+    padding: 10%;
+    border-radius: 50px 5px;
+    background-color: rgba(240, 248, 255, 0.658);
+}
+
+.form{
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+
+}
+
+.form label{
+    margin: 10px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    /* background-color: brown; */
+}
+
+.form span{
+    margin: 10px;
+    /* background-color: aqua; */
+}
+
+.button{
+    padding: 10px;
+    border: 5px solid greenyellow;
+    border-radius: 10px;
+    background-color: black;
+    color: yellowgreen;
+}

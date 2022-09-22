@@ -1,0 +1,12 @@
+.form {
+  height: 100vh;
+  width: 100vw;
+  background-image: url(../../assets/background.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
