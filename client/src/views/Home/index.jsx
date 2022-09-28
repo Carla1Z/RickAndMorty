@@ -1,6 +1,6 @@
 import Characters from "../../components/Characters";
 import Nav from "../../components/Nav";
-import Pagination from '../../components/Pagination'
+import Pagination from "../../components/Pagination";
 import styles from "./Home.module.css";
 import banner from "../../assets/banner.jpg";
 import Filter from "../../components/Filter";
@@ -15,14 +15,14 @@ function Home() {
   // console.log(allCharacters);
 
   // const [character, setCharacter] = useState([])
-  const [currentPage, setCurrentPage] = useState(1)
-  const [characterPerPage] = useState(6)
+  const [currentPage, setCurrentPage] = useState(1);
+  const [characterPerPage] = useState(6);
 
-  const lastCharacter = currentPage * characterPerPage
-  const firstCharacter = lastCharacter - characterPerPage
-  const currentCharacter = allCharacters.slice(firstCharacter, lastCharacter)
+  const lastCharacter = currentPage * characterPerPage;
+  const firstCharacter = lastCharacter - characterPerPage;
+  const currentCharacter = allCharacters.slice(firstCharacter, lastCharacter);
 
-  const paginate = pageNumber => setCurrentPage(pageNumber)
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   useEffect(() => {
     dispatch(getCharacters());
@@ -33,8 +33,14 @@ function Home() {
       <div className={styles.home}>
         <img src={banner} alt="rick and morty" className={styles.banner} />
         <Filter />
-        <Pagination allCharacters={allCharacters.length} characterPerPage={characterPerPage} paginate={paginate} />
-        <Characters allCharacters={currentCharacter}/>
+        <Pagination
+          allCharacters={allCharacters.length}
+          characterPerPage={characterPerPage}
+          paginate={paginate}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+        <Characters allCharacters={currentCharacter} />
       </div>
     </div>
   );

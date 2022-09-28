@@ -1,0 +1,5 @@
+.pagination {
+  padding-inline-start: initial;
+  list-style: none;
+  display: flex;
+}
