@@ -1,19 +1,40 @@
-import { Link } from "react-router-dom";
 import Characters from "../../components/Characters";
 import Nav from "../../components/Nav";
+import Pagination from '../../components/Pagination'
 import styles from "./Home.module.css";
 import banner from "../../assets/banner.jpg";
+import Filter from "../../components/Filter";
+import { getCharacters } from "../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useState } from "react";
 
 function Home() {
+  const dispatch = useDispatch();
+  const allCharacters = useSelector((state) => state.characters);
+  // console.log(allCharacters);
+
+  // const [character, setCharacter] = useState([])
+  const [currentPage, setCurrentPage] = useState(1)
+  const [characterPerPage] = useState(6)
+
+  const lastCharacter = currentPage * characterPerPage
+  const firstCharacter = lastCharacter - characterPerPage
+  const currentCharacter = allCharacters.slice(firstCharacter, lastCharacter)
+
+  const paginate = pageNumber => setCurrentPage(pageNumber)
+
+  useEffect(() => {
+    dispatch(getCharacters());
+  }, [dispatch]);
   return (
     <div>
       <Nav />
       <div className={styles.home}>
         <img src={banner} alt="rick and morty" className={styles.banner} />
-        <Link to="/form">
-          <button className={styles.button}>Crear personaje</button>
-        </Link>
-        <Characters />
+        <Filter />
+        <Pagination allCharacters={allCharacters.length} characterPerPage={characterPerPage} paginate={paginate} />
+        <Characters allCharacters={currentCharacter}/>
       </div>
     </div>
   );

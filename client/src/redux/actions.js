@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_CHARACTERS } from "./type";
+import { GET_CHARACTERS, GET_ORDER_ABC } from "./type";
 
 export function getCharacters() {
   return async (dispatch) => {
@@ -9,4 +9,11 @@ export function getCharacters() {
       payload: allCharacters.data,
     });
   };
+}
+
+export function getOrderAbc(payload){
+  return{
+    type: GET_ORDER_ABC,
+    payload,
+  }
 }

@@ -1,18 +1,7 @@
 import styles from "./Characters.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { getCharacters } from "../../redux/actions";
 import Card from "../Card";
 
-function Characters() {
-  const dispatch = useDispatch();
-  const allCharacters = useSelector((state) => state.characters);
-  // console.log(allCharacters);
-
-  useEffect(() => {
-    dispatch(getCharacters());
-  }, [dispatch]);
-
+function Characters({allCharacters}) {
   return (
     <div>
       <div className={styles.cards}>

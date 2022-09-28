@@ -1,0 +1,22 @@
+.filter {
+  background-image: linear-gradient(#00b0c8, yellowgreen);
+  border-radius: 10px;
+  border: 1px solid yellowgreen;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button {
+  margin: 5px 15px;
+  padding: 5px;
+  border-radius: 7px;
+  color: yellowgreen;
+  background-color: black;
+  border: none;
+}
+
+.abc{
+    margin-right: 15px;
+}

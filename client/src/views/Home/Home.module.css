@@ -1,15 +1,7 @@
 .home{
+    background-color: black;
     display: grid;
     justify-content: center;
-}
-
-.button{
-    margin: 5px;
-    padding: 5px;
-    border-radius: 7px;
-    color: yellowgreen;
-    background-color: black;
-    border: none;
 }
 
 .banner{
