@@ -28,7 +28,6 @@ function Home() {
   const [orden, setOrden] = useState("")
 
 
-
   useEffect(() => {
     dispatch(getCharacters());
   }, [dispatch]);
@@ -37,7 +36,7 @@ function Home() {
       <Nav />
       <div className={styles.home}>
         <img src={banner} alt="rick and morty" className={styles.banner} />
-        <Filter setCurrentPage={setCurrentPage} setOrden={setOrden} />
+        <Filter setOrden={setOrden} />
         <Pagination
           allCharacters={allCharacters.length}
           characterPerPage={characterPerPage}
