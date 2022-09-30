@@ -1,10 +1,30 @@
 const { Router } = require("express");
 const { Character, Episode } = require("../db");
 const { allCharacter } = require("../controllers/allInfo");
+const { default: axios } = require("axios");
 
 const characterRoutes = Router();
 
-characterRoutes.get("/", async (req, res) => {
+characterRoutes.get("/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    if (id.length > 5) {
+      let character = await Character.findByPk(id);
+      res.status(200).send(character);
+      // res.send('if de la ruta id')
+    } else {
+      let character = await axios.get(`https://rickandmortyapi.com/api/character/${id}`);
+      character = character.data;
+      // console.log(character);
+      res.status(200).send(character);
+      // res.send('else de la ruta id')
+    }
+  } catch (error) {
+    res.send("Error en la ruta ID= " + error);
+  }
+});
+
+characterRoutes.get("", async (req, res) => {
   try {
     const apiInfo = await allCharacter();
     // console.log(apiInfo);
@@ -27,7 +47,7 @@ characterRoutes.get("/", async (req, res) => {
   }
 });
 
-characterRoutes.post("/", async (req, res) => {
+characterRoutes.post("", async (req, res) => {
   const { name, species, origin, image, created } = req.body;
 
   if (!name || !species || !origin || !image || !created)
