@@ -4,7 +4,7 @@ import Pagination from "../../components/Pagination";
 import styles from "./Home.module.css";
 import banner from "../../assets/banner.jpg";
 import Filter from "../../components/Filter";
-import { getCharacters } from "../../redux/actions";
+import { getCharacters, getOrderAbc } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -24,6 +24,11 @@ function Home() {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+  //ordenamiento
+  const [orden, setOrden] = useState("")
+
+
+
   useEffect(() => {
     dispatch(getCharacters());
   }, [dispatch]);
@@ -32,7 +37,7 @@ function Home() {
       <Nav />
       <div className={styles.home}>
         <img src={banner} alt="rick and morty" className={styles.banner} />
-        <Filter />
+        <Filter setCurrentPage={setCurrentPage} setOrden={setOrden} />
         <Pagination
           allCharacters={allCharacters.length}
           characterPerPage={characterPerPage}

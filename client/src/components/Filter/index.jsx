@@ -4,24 +4,13 @@ import { getCharacters, getOrderAbc } from "../../redux/actions";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-function Filter() {
+function Filter({ setOrden }) {
   const dispatch = useDispatch();
-  const [orden, setOrden] = useState("");
-  const [abc, setAbc] = useState("");
 
-  useEffect(() => {
-    if (orden !== "") {
-      if (orden === "all") {
-        dispatch(getCharacters());
-      } else {
-        dispatch(getOrderAbc());
-      }
-    }
-  }, [dispatch]);
 
-  const orderAbc = (e) => {
-    setOrden(e.target.value);
-    setAbc(`Ordenado ${e.target.value}`);
+  const ordenAbc = (e) => {
+    dispatch(getOrderAbc(e.target.value));
+    setOrden(`Ordenado ${e.target.value}`);
   };
 
   return (
@@ -32,7 +21,7 @@ function Filter() {
         </Link>
       </div>
 
-      <select onChange={(e) => orderAbc(e)} className={styles.abc}>
+      <select onChange={(e) => ordenAbc(e)} className={styles.abc}>
         <option value="all">...</option>
         <option value="asc">A - Z </option>
         <option value="desc">Z - A</option>

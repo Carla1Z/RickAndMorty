@@ -13,7 +13,7 @@ export default function rootReducer(state = initialState, action) {
       };
     case GET_ORDER_ABC:
       let sortedCharacters = [...state.characters];
-      console.log(sortedCharacters);
+      // console.log(sortedCharacters);
       sortedCharacters =
         action.payload === "asc"
           ? state.characters.sort(function (a, b) {
