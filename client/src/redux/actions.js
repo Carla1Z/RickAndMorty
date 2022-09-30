@@ -14,7 +14,7 @@ export function getCharacters() {
 export function getDetail(id) {
   return async (dispatch) => {
     let detailCharacter = await axios.get(
-      "http://localhost:3001/characters" + id
+      "http://localhost:3001/characters/" + id
     );
     return dispatch({
       type: GET_ID,

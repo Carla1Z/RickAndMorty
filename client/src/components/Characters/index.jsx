@@ -1,21 +1,24 @@
 import styles from "./Characters.module.css";
 import Card from "../Card";
+import { Link } from "react-router-dom";
 
-function Characters({allCharacters}) {
+function Characters({ allCharacters }) {
   return (
     <div>
       <div className={styles.cards}>
         {allCharacters ? (
           allCharacters.map((c) => {
             return (
-              <Card
-                key={c.id}
-                image={c.image}
-                name={c.name}
-                origin={c.origin}
-                species={c.species}
-                episode={c.episode}
-              />
+              <Link to={`/${c.id}`} key={c.id}>
+                <Card
+                  key={c.id}
+                  image={c.image}
+                  name={c.name}
+                  origin={c.origin}
+                  species={c.species}
+                  episode={c.episode}
+                />
+              </Link>
             );
           })
         ) : (
