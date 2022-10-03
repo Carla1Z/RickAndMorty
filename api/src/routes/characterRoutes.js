@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const { Character, Episode } = require("../db");
-const { allCharacter } = require("../controllers/allInfo");
 const { default: axios } = require("axios");
+const { allCharacterInfo } = require("../controllers/allCharacterInfo");
 
 const characterRoutes = Router();
 
@@ -13,7 +13,9 @@ characterRoutes.get("/:id", async (req, res) => {
       res.status(200).send(character);
       // res.send('if de la ruta id')
     } else {
-      let character = await axios.get(`https://rickandmortyapi.com/api/character/${id}`);
+      let character = await axios.get(
+        `https://rickandmortyapi.com/api/character/${id}`
+      );
       character = character.data;
       // console.log(character);
       res.status(200).send(character);
@@ -26,20 +28,17 @@ characterRoutes.get("/:id", async (req, res) => {
 
 characterRoutes.get("", async (req, res) => {
   try {
-    const apiInfo = await allCharacter();
-    // console.log(apiInfo);
+    const { name } = req.query;
+    let apiInfo = await allCharacterInfo();
 
-    if (apiInfo) {
-      let dbInfo = await Character.findAll({
-        include: {
-          model: Episode,
-          attributes: ["name"],
-          through: { attributes: [] },
-        },
-      });
-      res.json([...dbInfo, ...apiInfo]);
+    if (name) {
+      let characterName = await apiInfo.filter((el) =>
+        el.name.toLowerCase().includes(name.toLowerCase())
+      );
+
+      characterName.length ? res.status(200).send(characterName) : res.status(404).send("Error 404, personaje no encontrado")
     } else {
-      res.status(404).send("Error 404, personaje no encontrado");
+      res.status(200).send(apiInfo);
     }
     // res.send("GET en la ruta characters");
   } catch (error) {

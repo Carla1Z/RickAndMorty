@@ -1,21 +1,15 @@
 const axios = require("axios");
+const { Character, Episode } = require("../db");
 
 const allCharacter = async () => {
-  // const api = await axios.get('https://rickandmortyapi.com/api/character')
-  // const apiNext = await axios.get(api.data.info.next)
-  // console.log(apiNext.data.results);
-
   let character = [];
   for (let i = 1; i < 6; i++) {
     //me traigo solo las primeras 6 paginas
     const apiData = await axios.get(
       `https://rickandmortyapi.com/api/character?page=${i}`
     );
-
     // console.log(apiData);
 
-    //Para mapear apiData, necesito que sea una funcion
-    //concateno
     // character = character.concat(apiData) //necesito acceder a la informacion
     character = character.concat(apiData.data.results);
     // console.log(character);
@@ -35,26 +29,29 @@ const allCharacter = async () => {
   return character;
 };
 
-const allEpisodes = async () => {
-  let episodes = [];
-  for (let i = 1; i < 4; i++) {
-    const apiData = await axios.get(
-      `https://rickandmortyapi.com/api/episode?page=${i}`
-    );
 
-    episodes = episodes.concat(apiData.data.results);
+const dbCharacter = async () => {
+  return await Character.findAll({
+    include: {
+      model: Episode,
+      attributes: ["name"],
+      through: {
+        attributes: [],
+      },
+    },
+  });
+};
 
-    episodes = episodes.map((episode) => {
-      return {
-        id: episode.id,
-        name: episode.name,
-      };
-    });
-    return episodes;
-  }
+const allCharacterInfo = async () => {
+  const apiInfo = await allCharacter();
+  const dbInfo = await dbCharacter();
+  const infoTotal = apiInfo.concat(dbInfo);
+
+  return infoTotal
 };
 
 module.exports = {
   allCharacter,
-  allEpisodes,
+  dbCharacter,
+  allCharacterInfo,
 };

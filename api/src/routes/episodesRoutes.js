@@ -1,6 +1,6 @@
 const { Router } = require("express");
+const allEpisodes = require("../controllers/allEpisodesInfo");
 const { Episode } = require("../db");
-const { allEpisodes } = require("../controllers/allInfo");
 
 
 const episodesRoutes = Router();
