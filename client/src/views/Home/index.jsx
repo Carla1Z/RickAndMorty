@@ -23,9 +23,10 @@ function Home() {
   const currentCharacter = allCharacters.slice(firstCharacter, lastCharacter);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  //ordenamiento
+  
+  //Ordenamiento
   const [orden, setOrden] = useState("")
+
 
 
   useEffect(() => {
@@ -33,7 +34,7 @@ function Home() {
   }, [dispatch]);
   return (
     <div>
-      <Nav />
+      <Nav setCurrentPage={setCurrentPage} />
       <div className={styles.home}>
         <img src={banner} alt="rick and morty" className={styles.banner} />
         <Filter setOrden={setOrden} />

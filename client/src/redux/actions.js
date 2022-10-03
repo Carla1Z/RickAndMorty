@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_CHARACTERS, GET_ID, GET_ORDER_ABC } from "./type";
+import { GET_CHARACTERS, GET_ID, GET_NAME, GET_ORDER_ABC } from "./type";
 
 export function getCharacters() {
   return async (dispatch) => {
@@ -19,6 +19,18 @@ export function getDetail(id) {
     return dispatch({
       type: GET_ID,
       payload: detailCharacter.data,
+    });
+  };
+}
+
+export function getName(name) {
+  return async (dispatch) => {
+    let characterName = await axios.get(
+      "http://localhost:3001/characters?name=" + name
+    );
+    return dispatch({
+      type: GET_NAME,
+      payload: characterName.data,
     });
   };
 }

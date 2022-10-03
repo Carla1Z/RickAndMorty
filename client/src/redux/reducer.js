@@ -1,4 +1,4 @@
-import { GET_CHARACTERS, GET_ID, GET_ORDER_ABC } from "./type";
+import { GET_CHARACTERS, GET_ID, GET_NAME, GET_ORDER_ABC } from "./type";
 
 const initialState = {
   characters: [],
@@ -18,6 +18,11 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         detail: action.payload,
+      };
+    case GET_NAME:
+      return {
+        ...state,
+        characters: action.payload,
       };
     case GET_ORDER_ABC:
       let sortedCharacters = [...state.characters];
