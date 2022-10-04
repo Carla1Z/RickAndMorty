@@ -41,3 +41,10 @@ export function getOrderAbc(payload) {
     payload,
   };
 }
+
+export function postCharacter(payload) {
+  return async function (dispatch) {
+    let character = await axios.post("http://localhost:3001/characters");
+    return character;
+  };
+}
