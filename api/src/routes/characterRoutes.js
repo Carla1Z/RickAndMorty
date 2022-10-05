@@ -49,8 +49,8 @@ characterRoutes.get("", async (req, res) => {
 characterRoutes.post("", async (req, res) => {
   const { name, species, origin, image, created } = req.body;
 
-  if (!name || !species || !origin || !image || !created)
-    res.status(400).send("Faltan datos");
+  // if (!name || !species || !origin || !image || !created)
+  //   res.status(400).send("Faltan datos");
 
   try {
     const db = { name, species, origin, image, created };

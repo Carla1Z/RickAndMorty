@@ -2,6 +2,7 @@ import styles from "./Create.module.css";
 import { useDispatch } from "react-redux";
 import { postCharacter } from "../../redux/actions";
 import { useState } from "react";
+import axios from "axios";
 
 function Create() {
   const dispatch = useDispatch();
@@ -13,7 +14,9 @@ function Create() {
     episodes: [],
   });
 
-  const [errorButton, setErrorButton] = useState(true);
+  const [errorButton, setErrorButton] = useState(
+    // Object.keys(errorForm).length < 1 ? false : true
+  );
 
   const [errorForm, setErrorForm] = useState({});
 
@@ -41,9 +44,11 @@ function Create() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(postCharacter());
+    setErrorForm(validate(create))
+    // dispatch(postCharacter(create));
+    await axios.post("http://localhost:3001/characters", create)
     setCreate({
       name: "",
       origin: "",
@@ -51,6 +56,7 @@ function Create() {
       image: "",
       episodes: [],
     });
+    alert("Personaje creado")
   };
 
   const validate = (info) => {
@@ -142,7 +148,7 @@ function Create() {
           <input
             type="submit"
             value="Crear"
-            disabled={errorButton ? true : false}
+            disabled={errorButton}
             // className={styles.button}
           />
         </label>

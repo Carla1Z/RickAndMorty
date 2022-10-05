@@ -25,10 +25,10 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    created: {
-      type: DataTypes.DATE,
-      // defaultValue:
-      allowNull: false,
-    },
+    // created: {
+    //   type: DataTypes.DATE,
+    //   // defaultValue:
+    //   allowNull: true,
+    // },
   });
 };
