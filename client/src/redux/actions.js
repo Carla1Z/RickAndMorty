@@ -3,7 +3,7 @@ import { GET_CHARACTERS, GET_ID, GET_NAME, GET_ORDER_ABC } from "./type";
 
 export function getCharacters() {
   return async (dispatch) => {
-    let allCharacters = await axios.get("http://localhost:3001/characters");
+    let allCharacters = await axios.get("/characters");
     return dispatch({
       type: GET_CHARACTERS,
       payload: allCharacters.data,
@@ -14,7 +14,7 @@ export function getCharacters() {
 export function getDetail(id) {
   return async (dispatch) => {
     let detailCharacter = await axios.get(
-      "http://localhost:3001/characters/" + id
+      "/characters/" + id
     );
     return dispatch({
       type: GET_ID,
@@ -26,7 +26,7 @@ export function getDetail(id) {
 export function getName(name) {
   return async (dispatch) => {
     let characterName = await axios.get(
-      "http://localhost:3001/characters?name=" + name
+      "/characters?name=" + name
     );
     return dispatch({
       type: GET_NAME,
@@ -44,7 +44,7 @@ export function getOrderAbc(payload) {
 
 export function postCharacter(payload) {
   return async function (dispatch) {
-    let character = await axios.post("http://localhost:3001/characters");
+    let character = await axios.post("/characters");
     return character;
   };
 }
