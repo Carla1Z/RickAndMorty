@@ -1,6 +1,7 @@
 const server = require("./src/app.js");
 const allEpisodes = require("./src/controllers/allEpisodesInfo.js");
 const { conn } = require("./src/db.js");
+const port = process.env.PORT || 3001
 
 // Syncing all the models at once.
 
@@ -9,6 +10,6 @@ const { conn } = require("./src/db.js");
 conn.sync({ force: true }).then(() => {
   allEpisodes()
   server.listen(3001, () => {
-    console.log("Listening at 3001"); // eslint-disable-line no-console
+    console.log(`Listening at ${port}`); // eslint-disable-line no-console
   });
 });
