@@ -28,8 +28,6 @@ function Create() {
       ...create,
       [e.target.name]: e.target.value,
     });
-    //↑↑ asigno valor
-    //↓↓ valido
     // validate(create)
     setErrorForm(validate(create));
     console.log(create);
@@ -38,9 +36,7 @@ function Create() {
   const handleEpisodes = (e) => {
     setCreate({
       ...create,
-      //new Set elimina los valores repetidos
       episodes: [...new Set([...create.episodes, e.target.value])],
-      // episodes: Array.from(new Set([...create.episodes, e.target.value])),
     });
   };
 
@@ -66,8 +62,6 @@ function Create() {
       errores.species = "Hay errores en especie";
 
     return errores;
-    //el objeto de errores puede estar vacio o tener propiedades
-    //si contiene propiedades es que hay errores en el codigo
   };
 
   function validName(str) {
@@ -157,8 +151,4 @@ function Create() {
   );
 }
 
-// Nombre
-// Origen
-// Especie
-// Imágen
 export default Create;

@@ -1,6 +1,5 @@
 import styles from "./Nav.module.css";
 import Searchbar from "../Searchbar";
-// import logo from "../../assets/logo.png";
 import logo from "../../assets/logo.png";
 
 function Nav({setCurrentPage}) {

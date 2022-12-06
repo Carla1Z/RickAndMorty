@@ -8,11 +8,7 @@ const allCharacter = async () => {
     const apiData = await axios.get(
       `https://rickandmortyapi.com/api/character?page=${i}`
     );
-    // console.log(apiData);
-
-    // character = character.concat(apiData) //necesito acceder a la informacion
     character = character.concat(apiData.data.results);
-    // console.log(character);
   }
 
   character = character.map((character) => {
@@ -25,7 +21,6 @@ const allCharacter = async () => {
       created: character.created,
     };
   });
-  // console.log(character);
   return character;
 };
 
