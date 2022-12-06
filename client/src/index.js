@@ -6,7 +6,8 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { store } from "./redux/store";
 
-axios.defaults.baseURL = "https://rickandmorty-yoni.onrender.com"
+// axios.defaults.baseURL = "https://rickandmorty-yoni.onrender.com"
+axios.defaults.baseURL = "https://rickandmorty-production.up.railway.app/"
 
 ReactDOM.render(
   <React.StrictMode>
