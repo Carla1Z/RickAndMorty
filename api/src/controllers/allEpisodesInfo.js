@@ -1,5 +1,5 @@
 const axios = require("axios");
-
+const { Episode } = require("../db");
 
 const allEpisodes = async () => {
   let episodes = [];
@@ -10,14 +10,26 @@ const allEpisodes = async () => {
 
     episodes = episodes.concat(apiData.data.results);
 
-    episodes = episodes.map((episode) => {
-      return {
-        id: episode.id,
-        name: episode.name,
-      };
+    episodes = episodes.map((el) => el.name);
+    console.log(episodes);
+
+    let episodesEach = episodes.forEach((el) => {
+      Episode.findOrCreate({
+        where: { name: el.name },
+      });
     });
-    return episodes;
+    return episodesEach;
   }
 };
+
+// episodes = episodes.concat(apiData.data.results);
+// let episodesMap = episodes.map((el) => el.name);
+// console.log(episodesMap);
+// let episodesEach = episodes.forEach((el) => {
+//   Episode.findOrCreate({
+//     where: { name: el.name },
+//   });
+// });
+// return episodesEach;
 
 module.exports = allEpisodes;
