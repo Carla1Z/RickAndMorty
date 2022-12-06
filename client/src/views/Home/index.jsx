@@ -12,9 +12,6 @@ import { useState } from "react";
 function Home() {
   const dispatch = useDispatch();
   const allCharacters = useSelector((state) => state.characters);
-  // console.log(allCharacters);
-
-  // const [character, setCharacter] = useState([])
   const [currentPage, setCurrentPage] = useState(1);
   const [characterPerPage] = useState(6);
 

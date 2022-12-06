@@ -6,9 +6,6 @@ import { getDetail } from "../../redux/actions";
 
 function Detail() {
   const { id } = useParams();
-  // console.log(useParams());
-  // console.log(id);
-
   const dispatch = useDispatch();
   const characterDetail = useSelector((state) => state.detail);
   console.log(characterDetail);
