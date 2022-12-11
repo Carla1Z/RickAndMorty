@@ -43,13 +43,13 @@ characterRoutes.get("", async (req, res) => {
 });
 
 characterRoutes.post("", async (req, res) => {
-  const { name, species, origin, image, created } = req.body;
+  const { name, species, origin, image} = req.body;
 
   // if (!name || !species || !origin || !image || !created)
   //   res.status(400).send("Faltan datos");
 
   try {
-    const db = { name, species, origin, image, created };
+    const db = { name, species, origin, image };
     const newCharacter = await Character.create(db);
 
     res.status(200).send(newCharacter);
