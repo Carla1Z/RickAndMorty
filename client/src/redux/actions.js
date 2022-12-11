@@ -1,5 +1,11 @@
 import axios from "axios";
-import { GET_CHARACTERS, GET_ID, GET_NAME, GET_ORDER_ABC } from "./type";
+import {
+  GET_CHARACTERS,
+  GET_EPISODES,
+  GET_ID,
+  GET_NAME,
+  GET_ORDER_ABC,
+} from "./type";
 
 export function getCharacters() {
   return async (dispatch) => {
@@ -13,9 +19,7 @@ export function getCharacters() {
 
 export function getDetail(id) {
   return async (dispatch) => {
-    let detailCharacter = await axios.get(
-      "/characters/" + id
-    );
+    let detailCharacter = await axios.get("/characters/" + id);
     return dispatch({
       type: GET_ID,
       payload: detailCharacter.data,
@@ -25,9 +29,7 @@ export function getDetail(id) {
 
 export function getName(name) {
   return async (dispatch) => {
-    let characterName = await axios.get(
-      "/characters?name=" + name
-    );
+    let characterName = await axios.get("/characters?name=" + name);
     return dispatch({
       type: GET_NAME,
       payload: characterName.data,
@@ -46,5 +48,15 @@ export function postCharacter(payload) {
   return async function (dispatch) {
     let character = await axios.post("/characters", payload);
     return character;
+  };
+}
+
+export function getEpisodes() {
+  return async function (dispatch) {
+    let episodes = await axios("/episodes");
+    return dispatch({
+      type: GET_EPISODES,
+      payload: episodes.data,
+    });
   };
 }

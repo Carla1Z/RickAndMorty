@@ -1,9 +1,17 @@
-import { GET_CHARACTERS, GET_ID, GET_NAME, GET_ORDER_ABC, POST_CHARACTER } from "./type";
+import {
+  GET_CHARACTERS,
+  GET_EPISODES,
+  GET_ID,
+  GET_NAME,
+  GET_ORDER_ABC,
+  POST_CHARACTER,
+} from "./type";
 
 const initialState = {
   characters: [],
   allCharacters: [],
   detail: [],
+  episodes: [],
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -43,10 +51,15 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         characters: sortedCharacters,
       };
-      case POST_CHARACTER:
-        return {
-          ...state,
-        }
+    case POST_CHARACTER:
+      return {
+        ...state,
+      };
+    case GET_EPISODES:
+      return {
+        ...state,
+        episodes: action.payload,
+      };
     default:
       return state;
   }
