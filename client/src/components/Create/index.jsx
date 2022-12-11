@@ -1,15 +1,18 @@
 import styles from "./Create.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { postCharacter } from "../../redux/actions";
+import { getEpisodes, postCharacter } from "../../redux/actions";
+import { useEffect } from "react";
 
 export default function Create() {
   const dispatch = useDispatch();
+  const episodes = useSelector((state) => state.episodes);
   const [create, setCreate] = useState({
     name: "",
     origin: "",
     species: "",
     image: "",
+    episodes: [],
   });
 
   const handleChange = (e) => {
@@ -19,10 +22,17 @@ export default function Create() {
     });
   };
 
+  const handleSelectEpisodes = (e) => {
+    setCreate({
+      ...create,
+      episodes: [...new Set([...create.episodes, e.target.value])],
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(postCharacter(create));
-    alert("Personaje creado!")
+    alert("Personaje creado!");
     setCreate({
       name: "",
       origin: "",
@@ -30,6 +40,10 @@ export default function Create() {
       image: "",
     });
   };
+
+  useEffect(() => {
+    dispatch(getEpisodes());
+  }, []);
 
   return (
     <div className={styles.create}>
@@ -84,16 +98,17 @@ export default function Create() {
             </span>
             <span>
               <label className={styles.label}>Episodios</label>
-              <select name="" id="">
-                <option value="">Episodio 1</option>
-                <option value="">Episodio 2</option>
+              <select onChange={(e) => handleSelectEpisodes(e)}>
+                {
+                  episodes.map(episode => (
+                    <option value={episode.name} key={episode.id}>{episode.id} - {episode.name}</option>
+                  ))
+                }
               </select>
             </span>
           </div>
         </div>
-        <button type="submit" >
-          Crear
-        </button>
+        <button type="submit">Crear</button>
       </form>
     </div>
   );

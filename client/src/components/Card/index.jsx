@@ -12,7 +12,7 @@ function Card({ image, name, origin, species, episode }) {
               <ul>
                 <li>{species}</li>
                 <li>{origin}</li>
-                {/* <li>{episode}</li> */}
+                <li>{episode}</li>
               </ul>
             </div>
           </div>
