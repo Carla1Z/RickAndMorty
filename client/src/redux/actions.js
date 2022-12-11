@@ -44,7 +44,7 @@ export function getOrderAbc(payload) {
 
 export function postCharacter(payload) {
   return async function (dispatch) {
-    let character = await axios.post("/characters");
+    let character = await axios.post("/characters", payload);
     return character;
   };
 }

@@ -6,9 +6,9 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
+  display: grid;
+  align-content: center;
+  justify-items: center;
 }
 
 .back {
