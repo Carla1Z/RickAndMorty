@@ -25,16 +25,16 @@ function Pagination({
   }
 
   return (
-    <div>
-      <button onClick={prevPage}>Anterior</button>
-      <ul className={styles.pagination}>
+    <div className={styles.pagination}>
+      <button onClick={prevPage} className={styles.btn}>Anterior</button>
+      <ul className={styles.number}>
         {pageNumbers.map((number) => (
           <li key={number}>
-            <button onClick={() => paginate(number)}>{number}</button>
+            <button onClick={() => paginate(number)} className={styles.btn}>{number}</button>
           </li>
         ))}
       </ul>
-      <button onClick={nextPage}>Siguiente</button>
+      <button onClick={nextPage} className={styles.btn}>Siguiente</button>
     </div>
   );
 }

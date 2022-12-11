@@ -1,5 +1,32 @@
 .pagination {
+  display: flex;
+  justify-content: center;
+  margin: 0.3rem 0;
+}
+
+.number {
   padding-inline-start: initial;
   list-style: none;
   display: flex;
+}
+
+.btn {
+  margin: 0.04rem;
+  background: black;
+  color: yellowgreen;
+  padding: 0.3rem 0.5rem;
+  /* padding: 0.6em 1.3em; */
+  border: 1px solid yellowgreen;
+  border-radius: 0.5rem;
+  box-shadow: 0.1em 0.1em;
+}
+
+.btn:hover {
+  transform: translate(-0.05em, -0.05em);
+  box-shadow: 0.15em 0.15em;
+}
+
+.btn:active {
+  transform: translate(0.05em, 0.05em);
+  box-shadow: 0.05em 0.05em;
 }
