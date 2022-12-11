@@ -9,7 +9,11 @@ function Characters({ allCharacters }) {
         {allCharacters ? (
           allCharacters.map((c) => {
             return (
-              <Link to={`/${c.id}`} key={c.id}>
+              <Link
+                to={`/${c.id}`}
+                key={c.id}
+                style={{ textDecoration: "none" }}
+              >
                 <Card
                   key={c.id}
                   image={c.image}
