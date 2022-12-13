@@ -1,8 +1,8 @@
 import styles from "./SearchBar.module.css";
-import lupa from "../../assets/lupa.png";
 import { useDispatch } from "react-redux";
 import { getName } from "../../redux/actions";
 import { useState } from "react";
+import { BiSearchAlt } from "react-icons/bi";
 
 function Searchbar({setCurrentPage}) {
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ function Searchbar({setCurrentPage}) {
       <form className={styles.form}>
         <input type="text" placeholder="Buscar..." value={search} onChange={(e)=> input(e)} className={styles.input} />
         <button type="submit" onClick={(e) => submit(e)} className={styles.button}>
-          <img src={lupa} />
+        <BiSearchAlt />
         </button>
       </form>
     </div>

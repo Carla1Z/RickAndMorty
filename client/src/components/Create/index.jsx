@@ -125,7 +125,7 @@ export default function Create() {
         <button type="submit" className={styles.btnSubmit}>Crear</button>
       </form>
 
-      {create.episode.length != 0 ? (
+      {create.episode.length !== 0 ? (
         <div className={styles.contenedorSelect}>
           <h4>Episodios</h4>
           <div className={styles.episodeSelect}>

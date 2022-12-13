@@ -4,7 +4,7 @@ import Pagination from "../../components/Pagination";
 import styles from "./Home.module.css";
 import banner from "../../assets/banner.jpg";
 import Filter from "../../components/Filter";
-import { getCharacters, getOrderAbc } from "../../redux/actions";
+import { getCharacters } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -22,7 +22,7 @@ function Home() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   
   //Ordenamiento
-  const [orden, setOrden] = useState("")
+  const [ setOrden] = useState("")
 
 
 

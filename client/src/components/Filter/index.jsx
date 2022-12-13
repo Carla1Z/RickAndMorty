@@ -1,7 +1,6 @@
 import styles from "./Filter.module.css";
 import { Link } from "react-router-dom";
-import { getCharacters, getOrderAbc } from "../../redux/actions";
-import { useState, useEffect } from "react";
+import {  getOrderAbc } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 
 function Filter({ setOrden }) {
