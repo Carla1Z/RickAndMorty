@@ -7,6 +7,7 @@ import App from "./App";
 import { store } from "./redux/store";
 
 // axios.defaults.baseURL = "https://rickandmorty-yoni.onrender.com"
+// axios.defaults.baseURL = "http://localhost:3001/"
 axios.defaults.baseURL = "https://rickandmorty-production.up.railway.app/"
 
 ReactDOM.render(

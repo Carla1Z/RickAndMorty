@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import CharacterDetail from "../../components/CharacterDetail";
 import { getDetail } from "../../redux/actions";
+import styles from "./Detail.module.css";
 
 function Detail() {
   const { id } = useParams();
@@ -15,7 +16,7 @@ function Detail() {
   }, [dispatch, id]);
 
   return (
-    <div>
+    <div className={styles.detail}>
       <Link to="/">
         <button>Volver</button>
       </Link>
