@@ -18,12 +18,11 @@ const allCharacter = async () => {
       species: character.species,
       origin: character.origin.name,
       image: character.image,
-      created: character.created,
+      episode: character.episode.map(el => el),
     };
   });
   return character;
 };
-
 
 const dbCharacter = async () => {
   return await Character.findAll({
@@ -42,7 +41,7 @@ const allCharacterInfo = async () => {
   const dbInfo = await dbCharacter();
   const infoTotal = apiInfo.concat(dbInfo);
 
-  return infoTotal
+  return infoTotal;
 };
 
 module.exports = {

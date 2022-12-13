@@ -29,11 +29,13 @@ characterRoutes.get("", async (req, res) => {
     let apiInfo = await allCharacterInfo();
 
     if (name) {
-      let characterName = await apiInfo.filter((el) =>
+      let characterName = apiInfo.filter((el) =>
         el.name.toLowerCase().includes(name.toLowerCase())
       );
 
-      characterName.length ? res.status(200).send(characterName) : res.status(404).send("Error 404, personaje no encontrado")
+      characterName.length
+        ? res.status(200).send(characterName)
+        : res.status(404).send("Error 404, personaje no encontrado");
     } else {
       res.status(200).send(apiInfo);
     }
@@ -43,16 +45,26 @@ characterRoutes.get("", async (req, res) => {
 });
 
 characterRoutes.post("", async (req, res) => {
-  const { name, species, origin, image} = req.body;
+  const { name, species, origin, image, episode } = req.body;
 
   // if (!name || !species || !origin || !image || !created)
   //   res.status(400).send("Faltan datos");
 
   try {
-    const db = { name, species, origin, image };
-    const newCharacter = await Character.create(db);
+    let newCharacter = await Character.create({
+      name,
+      species,
+      origin,
+      image:
+        image ||
+        "https://images.fanart.tv/fanart/rick-and-morty-584c0c323de5b.jpg",
+    });
+    let searchEpisode = await Episode.findAll({
+      where: { name: episode },
+    });
 
-    res.status(200).send(newCharacter);
+    newCharacter.addEpisode(searchEpisode);
+    res.status(200).send("Personaje creado");
   } catch (error) {
     console.log("Error en la ruta POST de character" + error);
   }

@@ -12,7 +12,7 @@ export default function Create() {
     origin: "",
     species: "",
     image: "",
-    episodes: [],
+    episode: [],
   });
 
   const handleChange = (e) => {
@@ -25,7 +25,14 @@ export default function Create() {
   const handleSelectEpisodes = (e) => {
     setCreate({
       ...create,
-      episodes: [...new Set([...create.episodes, e.target.value])],
+      episode: [...new Set([...create.episode, e.target.value])],
+    });
+  };
+
+  const handleDeleteEpisode = (e) => {
+    setCreate({
+      ...create,
+      episode: create.episode.filter((el) => el !== e),
     });
   };
 
@@ -38,6 +45,7 @@ export default function Create() {
       origin: "",
       species: "",
       image: "",
+      episode: [],
     });
   };
 
@@ -47,7 +55,7 @@ export default function Create() {
 
   return (
     <div className={styles.create}>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <form onSubmit={(e) => handleSubmit(e)} className={styles.form}>
         <div className={styles.row}>
           <div>
             <span>
@@ -59,6 +67,7 @@ export default function Create() {
                 value={create.name}
                 onChange={(e) => handleChange(e)}
                 placeholder="Nombre de tu personaje"
+                required
               />
             </span>
             <span>
@@ -70,6 +79,7 @@ export default function Create() {
                 value={create.origin}
                 onChange={(e) => handleChange(e)}
                 placeholder="..."
+                required
               />
             </span>
             <span>
@@ -81,6 +91,7 @@ export default function Create() {
                 value={create.species}
                 onChange={(e) => handleChange(e)}
                 placeholder="..."
+                required
               />
             </span>
           </div>
@@ -98,18 +109,40 @@ export default function Create() {
             </span>
             <span>
               <label className={styles.label}>Episodios</label>
-              <select onChange={(e) => handleSelectEpisodes(e)}>
-                {
-                  episodes.map(episode => (
-                    <option value={episode.name} key={episode.id}>{episode.id} - {episode.name}</option>
-                  ))
-                }
+              <select
+                onChange={(e) => handleSelectEpisodes(e)}
+                className={styles.selectEpisode}
+              >
+                {episodes.map((episode) => (
+                  <option value={episode.name} key={episode.id}>
+                    {episode.id} - {episode.name}
+                  </option>
+                ))}
               </select>
             </span>
           </div>
         </div>
-        <button type="submit">Crear</button>
+        <button type="submit" className={styles.btnSubmit}>Crear</button>
       </form>
+
+      {create.episode.length != 0 ? (
+        <div className={styles.contenedorSelect}>
+          <h4>Episodios</h4>
+          <div className={styles.episodeSelect}>
+            {create.episode.map((el) => (
+              <span>
+                <button
+                  onClick={() => handleDeleteEpisode(el)}
+                  className={styles.btnDelete}
+                >
+                  X
+                </button>
+                <p>{el}</p>
+              </span>
+            ))}
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }
