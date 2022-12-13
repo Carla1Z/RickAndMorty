@@ -9,11 +9,11 @@ function Characters({ allCharacters }) {
         {allCharacters ? (
           allCharacters.map((c) => {
             return (
-              // <Link
-              //   to={`/${c.id}`}
-              //   key={c.id}
-              //   style={{ textDecoration: "none" }}
-              // >
+              <Link
+                to={`/${c.id}`}
+                key={c.id}
+                style={{ textDecoration: "none" }}
+              >
                 <Card
                   key={c.id}
                   image={c.image}
@@ -22,7 +22,7 @@ function Characters({ allCharacters }) {
                   species={c.species}
                   episode={c.episode}
                 />
-              // </Link>
+              </Link>
             );
           })
         ) : (
