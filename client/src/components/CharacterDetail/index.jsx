@@ -15,14 +15,18 @@ function CharacterDetail({ characterDetail }) {
           <div className={styles.info}>
             <h3>{characterDetail.name}</h3>
             <div className={styles.detail}>
-              <p>{characterDetail.status}</p>
-              <p>{characterDetail.species}</p>
+              <p><u>Estado</u>:{" "}{characterDetail.status}</p>
+              <p><u>Especie</u>:{" "}{characterDetail.species}</p>
               <p>{characterDetail.type}</p>
-              <p>{characterDetail.gender}</p>
               <p>
+                <u>Género</u>:{" "}{characterDetail.gender}
+              </p>
+              <p>
+                <u>Origen</u>:{" "}
                 {characterDetail.origin ? characterDetail.origin.name : null}
               </p>
               <p>
+                <u>Ubicación:</u>:{" "}
                 {characterDetail.location
                   ? characterDetail.location.name
                   : null}
