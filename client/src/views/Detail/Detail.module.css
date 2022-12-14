@@ -1,6 +1,41 @@
-.detail{
-    height: 100vh;
-    width: 100vw;
-    background-color: black;
-    color: white;
+.detail {
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  color: white;
+  padding-top: 1rem;
+}
+
+.back {
+  display: flex;
+  height: 3em;
+  width: 100px;
+  align-items: center;
+  justify-content: center;
+  background-color: #eeeeee4b;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  transition: all 0.2s linear;
+  cursor: pointer;
+  border: none;
+  background: #fff;
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.back > svg {
+  margin-right: 5px;
+  margin-left: 5px;
+  font-size: 20px;
+  transition: all 0.4s ease-in;
+}
+
+.back:hover > svg {
+  font-size: 1.2em;
+  transform: translateX(-5px);
+}
+
+.back:hover {
+  box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+  transform: translateY(-2px);
 }

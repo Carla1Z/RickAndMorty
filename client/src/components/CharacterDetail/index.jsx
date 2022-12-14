@@ -14,19 +14,25 @@ function CharacterDetail({ characterDetail }) {
           </div>
           <div className={styles.info}>
             <h3>{characterDetail.name}</h3>
-            <p>{characterDetail.status}</p>
-            <p>{characterDetail.species}</p>
-            <p>{characterDetail.type}</p>
-            <p>{characterDetail.gender}</p>
-            <p>{characterDetail.origin ? characterDetail.origin.name : null}</p>
-            <p>
-              {characterDetail.location ? characterDetail.location.name : null}
-            </p>
-            {/* {characterDetail.episode
+            <div className={styles.detail}>
+              <p>{characterDetail.status}</p>
+              <p>{characterDetail.species}</p>
+              <p>{characterDetail.type}</p>
+              <p>{characterDetail.gender}</p>
+              <p>
+                {characterDetail.origin ? characterDetail.origin.name : null}
+              </p>
+              <p>
+                {characterDetail.location
+                  ? characterDetail.location.name
+                  : null}
+              </p>
+              {/* {characterDetail.episode
             ? characterDetail.episode.map((el) => {
-                return <p>{el}</p>;
-              })
-            : null} */}
+              return <p>{el}</p>;
+            })
+          : null} */}
+            </div>
           </div>
         </div>
       ) : (

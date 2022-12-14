@@ -5,8 +5,7 @@ import styles from "./Form.module.css";
 function Form() {
   return (
     <div className={styles.form}>
-      <Link to="/">
-        {/* <button>Volver</button> */}
+      <Link to="/" style={{ textDecoration: "none" }}>
         <button className={styles.back}>
           <svg
             height="16"
