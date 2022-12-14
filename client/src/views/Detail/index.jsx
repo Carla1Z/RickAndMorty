@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import CharacterDetail from "../../components/CharacterDetail";
-import { getDetail } from "../../redux/actions";
+import { clearDetail, getDetail } from "../../redux/actions";
 import styles from "./Detail.module.css";
 
 function Detail() {
@@ -12,6 +12,7 @@ function Detail() {
   console.log(characterDetail);
 
   useEffect(() => {
+    dispatch(clearDetail());
     dispatch(getDetail(id));
   }, [dispatch, id]);
 

@@ -1,5 +1,6 @@
 import axios from "axios";
 import {
+  CLEAR_DETAIL,
   GET_CHARACTERS,
   GET_EPISODES,
   GET_ID,
@@ -24,6 +25,12 @@ export function getDetail(id) {
       type: GET_ID,
       payload: detailCharacter.data,
     });
+  };
+}
+
+export function clearDetail() {
+  return {
+    type: CLEAR_DETAIL,
   };
 }
 

@@ -1,4 +1,5 @@
 import {
+  CLEAR_DETAIL,
   GET_CHARACTERS,
   GET_EPISODES,
   GET_ID,
@@ -26,6 +27,11 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         detail: action.payload,
+      };
+    case CLEAR_DETAIL:
+      return {
+        ...state,
+        detail: {},
       };
     case GET_NAME:
       return {
