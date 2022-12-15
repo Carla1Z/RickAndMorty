@@ -15,9 +15,11 @@ function CharacterDetail({ characterDetail }) {
           <div className={styles.info}>
             <h3>{characterDetail.name}</h3>
             <div className={styles.detail}>
-              <p>
-                <u>Estado</u>: {characterDetail.status}
-              </p>
+              {!characterDetail.originDb ? (
+                <p>
+                  <u>Estado</u>: {characterDetail.status}
+                </p>
+              ) : null}
               <p>
                 <u>Especie</u>: {characterDetail.species}
               </p>
@@ -27,21 +29,36 @@ function CharacterDetail({ characterDetail }) {
                   <u>Género</u>: {characterDetail.gender}
                 </p>
               ) : null}
-              <p>
-                <u>Origen</u>:{" "}
-                {characterDetail.origin ? characterDetail.origin.name : null}
-              </p>
-              <p>
-                <u>Ubicación:</u>:{" "}
-                {characterDetail.location
-                  ? characterDetail.location.name
-                  : null}
-              </p>
-              {/* {characterDetail.episode
-            ? characterDetail.episode.map((el) => {
-              return <p>{el}</p>;
-            })
-          : null} */}
+              {!characterDetail.originDb ? (
+                <p>
+                  <u>Origen</u>:{" "}
+                  {characterDetail.origin ? characterDetail.origin.name : null}
+                </p>
+              ) : (
+                <p>
+                  <u>Origen</u>: {characterDetail.origin}
+                </p>
+              )}
+              {!characterDetail.originDb ? (
+                <p>
+                  <u>Ubicación:</u>:{" "}
+                  {characterDetail.location
+                    ? characterDetail.location.name
+                    : null}
+                </p>
+              ) : null}
+              {!characterDetail.originDb ? null : (
+                <p>
+                  <u>Episodios:</u>
+                  {characterDetail.episodes.map((el) => {
+                    return (
+                      <ul className={styles.episodes}>
+                        <li>{el.name}</li>
+                      </ul>
+                    );
+                  })}
+                </p>
+              )}
             </div>
           </div>
         </div>
