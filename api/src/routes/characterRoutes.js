@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const { Character, Episode } = require("../db");
 const { default: axios } = require("axios");
-const { allCharacterInfo } = require("../controllers/allCharacterInfo");
+const { allCharacterInfo, dbCharacter } = require("../controllers/allCharacterInfo");
 
 const characterRoutes = Router();
 
@@ -9,8 +9,9 @@ characterRoutes.get("/:id", async (req, res) => {
   const { id } = req.params;
   try {
     if (id.length > 5) {
-      let character = await Character.findByPk(id);
-      res.status(200).send(character);
+      let character = await dbCharacter(id);
+      let character2 = character[0]
+      res.status(200).send(character2);
     } else {
       let character = await axios.get(
         `https://rickandmortyapi.com/api/character/${id}`
