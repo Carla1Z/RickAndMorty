@@ -22,7 +22,7 @@ function Home() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   
   //Ordenamiento
-  const [ setOrden] = useState("")
+  const [orden, setOrden] = useState("")
 
 
 
